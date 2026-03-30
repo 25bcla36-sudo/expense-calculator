@@ -7,7 +7,7 @@ let chart;
 
 const BASE_URL = "https://expense-backend-cbxa.onrender.com";
 
-// load expenses
+// LOAD expenses
 async function loadExpenses() {
     try {
         const res = await fetch(`${BASE_URL}/expenses`);
@@ -48,11 +48,11 @@ async function loadExpenses() {
         });
 
     } catch (err) {
-        console.log("Error loading:", err);
+        console.error("Error loading expenses:", err);
     }
 }
 
-// add expense
+// ADD expense
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
 
@@ -71,11 +71,11 @@ form.addEventListener("submit", async function(e) {
         form.reset();
         loadExpenses();
     } catch (err) {
-        console.log("Error adding:", err);
+        console.error("Error adding expense:", err);
     }
 });
 
-// delete expense
+// DELETE expense
 async function deleteExpense(index) {
     try {
         await fetch(`${BASE_URL}/expenses/${index}`, {
@@ -84,9 +84,9 @@ async function deleteExpense(index) {
 
         loadExpenses();
     } catch (err) {
-        console.log("Error deleting:", err);
+        console.error("Error deleting expense:", err);
     }
 }
 
-// load on start
+// LOAD on start
 loadExpenses();
