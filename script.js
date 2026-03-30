@@ -7,7 +7,7 @@ let chart;
 
 // load expenses
 async function loadExpenses() {
-    const res = await fetch("http://localhost:3000/expenses");
+    const res = await fetch("https://expense-backend-cbxa.onrender.com");
     const data = await res.json();
 
     list.innerHTML = "";
@@ -55,7 +55,7 @@ form.addEventListener("submit", async function(e) {
     const desc = document.getElementById("desc").value;
     const amount = parseInt(document.getElementById("amount").value);
 
-    await fetch("http://localhost:3000/expenses", {
+    await fetch("https://expense-backend-cbxa.onrender.com", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -69,7 +69,7 @@ form.addEventListener("submit", async function(e) {
 
 // delete expense
 async function deleteExpense(index) {
-    await fetch(`http://localhost:3000/expenses/${index}`, {
+    await fetch(`https://expense-backend-cbxa.onrender.com/${index}`, {
         method: "DELETE"
     });
 
