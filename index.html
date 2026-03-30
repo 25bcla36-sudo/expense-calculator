@@ -3,45 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Expense Tracker</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js (fixed version) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
-<!-- Intro Section -->
-<div class="intro">
-    <p>
-        Hey! I’m Michael Christopher, a student at Kristu Jayanti University. 
-        I created this website myself as part of my project, putting together my ideas, 
-        skills, and creativity into something cool and functional. It’s a small glimpse 
-        of what I’m learning and building along my journey.
-    </p>
-</div>
+    <div class="container">
+        
+        <!-- Intro -->
+        <h1>Expense Tracker 💸</h1>
+        <p>
+            Hey! I’m Michael Christopher, a student at Kristu Jayanti University. 
+            I created this website myself as part of my project, putting together my ideas, 
+            skills, and creativity into something cool and functional. 
+            It’s a small glimpse of what I’m learning and building along my journey.
+        </p>
 
-<!-- Main App -->
-<div class="container">
-    <h1>💸 Expense Tracker</h1>
+        <!-- Form -->
+        <form id="expense-form">
+            <input type="text" id="desc" placeholder="Enter description" required>
+            <input type="number" id="amount" placeholder="Enter amount" required>
+            <button type="submit">Add Expense</button>
+        </form>
 
-    <form id="expense-form">
-        <input type="text" id="desc" placeholder="Enter description" required>
-        <input type="number" id="amount" placeholder="Enter amount" required>
-        <button type="submit">Add Expense</button>
-    </form>
+        <!-- Total -->
+        <h2>Total: ₹<span id="total">0</span></h2>
 
-    <h2>Total: ₹ <span id="total">0</span></h2>
+        <!-- List -->
+        <ul id="list"></ul>
 
-    <ul id="list"></ul>
+        <!-- Chart -->
+        <canvas id="chart"></canvas>
 
-    <!-- Chart -->
-    <canvas id="chart" width="300" height="300"></canvas>
-</div>
+    </div>
 
-<!-- Chart.js -->
-<script src="<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>"></script>
-
-<!-- JS -->
-<script src="script.js"></script>
+    <!-- Script -->
+    <script src="script.js"></script>
 
 </body>
 </html>
