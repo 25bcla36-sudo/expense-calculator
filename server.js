@@ -7,31 +7,42 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// get all expenses
+// GET expenses
 app.get("/expenses", (req, res) => {
-    const data = fs.readFileSync("data.json");
-    res.json(JSON.parse(data));
+    try {
+        const data = fs.readFileSync("data.json");
+        res.json(JSON.parse(data));
+    } catch {
+        res.json([]);
+    }
 });
 
-// add expense
+// ADD expense
 app.post("/expenses", (req, res) => {
     const { desc, amount } = req.body;
 
-    const data = JSON.parse(fs.readFileSync("data.json"));
+    let data = [];
 
-    const newExpense = { desc, amount };
-    data.push(newExpense);
+    try {
+        data = JSON.parse(fs.readFileSync("data.json"));
+    } catch {}
+
+    data.push({ desc, amount });
 
     fs.writeFileSync("data.json", JSON.stringify(data));
 
     res.json({ message: "Saved" });
 });
 
-// delete expense
+// DELETE expense
 app.delete("/expenses/:index", (req, res) => {
     const index = req.params.index;
 
-    const data = JSON.parse(fs.readFileSync("data.json"));
+    let data = [];
+
+    try {
+        data = JSON.parse(fs.readFileSync("data.json"));
+    } catch {}
 
     data.splice(index, 1);
 
@@ -40,7 +51,7 @@ app.delete("/expenses/:index", (req, res) => {
     res.json({ message: "Deleted" });
 });
 
-// start server
+// PORT FIX FOR RENDER
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
